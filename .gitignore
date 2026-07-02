@@ -1,0 +1,13 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Build artifacts (intentionally NOT ignored — we commit the /pdf/ build output for GitHub Pages)

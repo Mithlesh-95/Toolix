@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split PDF — Toolix</title>
+  <meta name="description" content="Split a PDF into individual pages or custom ranges. Fast, secure, and completely client-side. Your files never touch a server.">
+  
+  <!-- CSS & Theme Loader -->
+  <link rel="stylesheet" href="../../../shared/ui/style.css">
+  <script src="../../../shared/utils/theme.js"></script>
+
+  <!-- PDF Processing Libraries (CDN) -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+
+  <!-- Global Navigation Header -->
+  <toolix-header></toolix-header>
+
+  <main class="workspace-container">
+    
+    <!-- Breadcrumbs / Navigation -->
+    <nav style="font-size: var(--text-xs); color: var(--text-muted);">
+      <a href="../index.html" class="nav-link" style="display: inline-flex; align-items: center; gap: 4px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        PDF Utilities
+      </a>
+      <span style="margin: 0 6px;">/</span>
+      <span class="text-secondary">Split PDF</span>
+    </nav>
+
+    <!-- Workspace Title -->
+    <header style="margin-bottom: var(--space-xs);">
+      <h1 class="text-xl" style="font-weight: 600;">Split PDF</h1>
+      <p class="text-sm text-secondary">Split your PDF document into individual files or extract custom page ranges.</p>
+    </header>
+
+    <!-- Workspace Grid Layout -->
+    <div class="workspace-layout">
+      
+      <!-- Main Action Area: Canvas -->
+      <section class="card" id="canvas-area" style="min-height: 380px; display: flex; flex-direction: column; justify-content: center; position: relative;">
+        
+        <!-- Drag and Drop Upload Zone (Shown initially) -->
+        <div id="drop-zone" class="upload-zone">
+          <input type="file" id="file-input" accept=".pdf">
+          <div class="upload-zone-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          </div>
+          <div>
+            <p class="text-md" style="font-weight: 500; margin-bottom: var(--space-xs);">Drag & drop a PDF file here</p>
+            <p class="text-xs text-muted">or click to browse from your device</p>
+          </div>
+        </div>
+
+        <!-- Files List & Previews Container (Hidden initially) -->
+        <div id="files-container" style="display: none; width: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+            <span class="text-xs label" id="file-name-label">document.pdf</span>
+            <button class="btn btn-secondary text-xs" id="remove-file-btn" style="padding: 4px var(--space-sm); font-size: var(--text-xs);">
+              Change File
+            </button>
+          </div>
+          
+          <!-- Scrollable Page Previews Grid -->
+          <div class="file-list" id="page-preview-grid">
+            <!-- Pages injected dynamically here -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Control Settings Area: Panel -->
+      <aside class="card" style="display: flex; flex-direction: column; gap: var(--space-lg); justify-content: space-between;">
+        
+        <div>
+          <h2 class="text-xs label" style="margin-bottom: var(--space-md);">Split Options</h2>
+          
+          <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+            <!-- Option A: Extract Custom Ranges -->
+            <label class="checkbox-label" style="align-items: flex-start;">
+              <input type="radio" name="split-mode" value="ranges" checked class="checkbox" style="margin-top: 3px;">
+              <div>
+                <span style="font-weight: 600;">Custom Page Ranges</span>
+                <p class="text-xs text-muted">Extract specific pages or segments into one PDF.</p>
+              </div>
+            </label>
+
+            <!-- Range Text Input -->
+            <div class="form-group" id="range-input-group" style="margin-left: 24px;">
+              <input type="text" id="range-input" class="input" placeholder="e.g. 1-3, 5, 8-10" style="padding: var(--space-sm); font-size: var(--text-xs);">
+              <span class="text-xs text-muted" style="font-size: 10px;">Use commas to separate, hyphens for ranges. Ex: "1-3, 5" extracts pages 1, 2, 3, and 5.</span>
+            </div>
+
+            <!-- Option B: Split All Pages -->
+            <label class="checkbox-label" style="align-items: flex-start;">
+              <input type="radio" name="split-mode" value="all" class="checkbox" style="margin-top: 3px;">
+              <div>
+                <span style="font-weight: 600;">Split All Pages</span>
+                <p class="text-xs text-muted">Generate a separate 1-page PDF for every page. Downloads as a ZIP archive.</p>
+              </div>
+            </label>
+
+            <!-- Option C: Extract Odd Pages -->
+            <label class="checkbox-label" style="align-items: flex-start;">
+              <input type="radio" name="split-mode" value="odd" class="checkbox" style="margin-top: 3px;">
+              <div>
+                <span style="font-weight: 600;">Extract Odd Pages</span>
+                <p class="text-xs text-muted">Extract only pages 1, 3, 5... into a single PDF.</p>
+              </div>
+            </label>
+
+            <!-- Option D: Extract Even Pages -->
+            <label class="checkbox-label" style="align-items: flex-start;">
+              <input type="radio" name="split-mode" value="even" class="checkbox" style="margin-top: 3px;">
+              <div>
+                <span style="font-weight: 600;">Extract Even Pages</span>
+                <p class="text-xs text-muted">Extract only pages 2, 4, 6... into a single PDF.</p>
+              </div>
+            </label>
+
+            <!-- Option E: Split after page numbers -->
+            <label class="checkbox-label" style="align-items: flex-start;">
+              <input type="radio" name="split-mode" value="split-after" class="checkbox" style="margin-top: 3px;">
+              <div>
+                <span style="font-weight: 600;">Split after page numbers</span>
+                <p class="text-xs text-muted">Cut document at specific pages (e.g. "3, 7" splits into pages 1-3, 4-7, 8-end). Downloads as a ZIP.</p>
+              </div>
+            </label>
+
+            <!-- Split After Input Group -->
+            <div class="form-group" id="split-after-input-group" style="margin-left: 24px; display: none;">
+              <input type="text" id="split-after-input" class="input" placeholder="e.g. 3, 7" style="padding: var(--space-sm); font-size: var(--text-xs);">
+              <span class="text-xs text-muted" style="font-size: 10px;">Enter comma-separated page numbers where the cuts will occur.</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!-- Progress Tracking -->
+          <div id="progress-wrapper" class="progress-container" style="display: none; margin-bottom: var(--space-md);">
+            <div style="display: flex; justify-content: space-between; font-size: var(--text-xs);">
+              <span id="progress-status" class="text-muted">Extracting...</span>
+              <span id="progress-percent" style="font-weight: 600;">0%</span>
+            </div>
+            <div class="progress-track">
+              <div id="progress-bar-fill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <!-- Alert State Message -->
+          <div id="alert-box" class="alert" style="display: none;"></div>
+
+          <!-- Execute Button -->
+          <button class="btn btn-primary" id="split-btn" disabled style="width: 100%; padding: var(--space-md); font-size: var(--text-sm); font-weight: 600;">
+            Split PDF
+          </button>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <toolix-footer></toolix-footer>
+
+  <!-- Loader scripts -->
+  <script src="../../../shared/utils/history.js"></script>
+  <script src="../../../shared/utils/download.js"></script>
+  <script src="../../../shared/components/header.js"></script>
+  <script src="../../../shared/components/footer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

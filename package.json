@@ -1,0 +1,18 @@
+{
+  "name": "toolix",
+  "version": "1.0.0",
+  "description": "Everything you need to work smarter. Offline-first productivity platform.",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --serve"
+  },
+  "keywords": [
+    "toolix",
+    "pdf",
+    "utilities",
+    "client-side",
+    "privacy-first"
+  ],
+  "author": "",
+  "license": "ISC"
+}

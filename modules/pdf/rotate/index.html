@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotate PDF — Toolix</title>
+  <meta name="description" content="Rotate PDF pages. Fast, secure, and completely client-side. Your files never touch a server.">
+  
+  <!-- CSS & Theme Loader -->
+  <link rel="stylesheet" href="../../../shared/ui/style.css">
+  <script src="../../../shared/utils/theme.js"></script>
+
+  <!-- PDF Processing Libraries (CDN) -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+
+  <!-- Global Navigation Header -->
+  <toolix-header></toolix-header>
+
+  <main class="workspace-container">
+    
+    <!-- Breadcrumbs / Navigation -->
+    <nav style="font-size: var(--text-xs); color: var(--text-muted);">
+      <a href="../index.html" class="nav-link" style="display: inline-flex; align-items: center; gap: 4px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        PDF Utilities
+      </a>
+      <span style="margin: 0 6px;">/</span>
+      <span class="text-secondary">Rotate PDF</span>
+    </nav>
+
+    <!-- Workspace Title -->
+    <header style="margin-bottom: var(--space-xs);">
+      <h1 class="text-xl" style="font-weight: 600;">Rotate PDF</h1>
+      <p class="text-sm text-secondary">Rotate pages of your PDF document individually or in bulk.</p>
+    </header>
+
+    <!-- Workspace Grid Layout -->
+    <div class="workspace-layout">
+      
+      <!-- Main Action Area: Canvas -->
+      <section class="card" id="canvas-area" style="min-height: 380px; display: flex; flex-direction: column; justify-content: center; position: relative;">
+        
+        <!-- Drag and Drop Upload Zone (Shown initially) -->
+        <div id="drop-zone" class="upload-zone">
+          <input type="file" id="file-input" accept=".pdf">
+          <div class="upload-zone-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          </div>
+          <div>
+            <p class="text-md" style="font-weight: 500; margin-bottom: var(--space-xs);">Drag & drop a PDF file here</p>
+            <p class="text-xs text-muted">or click to browse from your device</p>
+          </div>
+        </div>
+
+        <!-- Files List & Previews Container (Hidden initially) -->
+        <div id="files-container" style="display: none; width: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+            <span class="text-xs label" id="file-name-label">document.pdf</span>
+            <button class="btn btn-secondary text-xs" id="remove-file-btn" style="padding: 4px var(--space-sm); font-size: var(--text-xs);">
+              Change File
+            </button>
+          </div>
+          
+          <!-- Scrollable Page Previews Grid -->
+          <div class="file-list" id="page-preview-grid">
+            <!-- Pages injected dynamically here -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Control Settings Area: Panel -->
+      <aside class="card" style="display: flex; flex-direction: column; gap: var(--space-lg); justify-content: space-between;">
+        
+        <div>
+          <h2 class="text-xs label" style="margin-bottom: var(--space-md);">Bulk Operations</h2>
+          
+          <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <button class="btn btn-secondary" id="rotate-all-cw" disabled style="justify-content: flex-start; gap: var(--space-sm);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              Rotate All 90° Clockwise
+            </button>
+            <button class="btn btn-secondary" id="rotate-all-ccw" disabled style="justify-content: flex-start; gap: var(--space-sm);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38L2.5 8"/></svg>
+              Rotate All 90° Counter-CW
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <!-- Progress Tracking -->
+          <div id="progress-wrapper" class="progress-container" style="display: none; margin-bottom: var(--space-md);">
+            <div style="display: flex; justify-content: space-between; font-size: var(--text-xs);">
+              <span id="progress-status" class="text-muted">Rotating...</span>
+              <span id="progress-percent" style="font-weight: 600;">0%</span>
+            </div>
+            <div class="progress-track">
+              <div id="progress-bar-fill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <!-- Alert State Message -->
+          <div id="alert-box" class="alert" style="display: none;"></div>
+
+          <!-- Execute Button -->
+          <button class="btn btn-primary" id="save-btn" disabled style="width: 100%; padding: var(--space-md); font-size: var(--text-sm); font-weight: 600;">
+            Save & Download
+          </button>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <toolix-footer></toolix-footer>
+
+  <!-- Loader scripts -->
+  <script src="../../../shared/utils/history.js"></script>
+  <script src="../../../shared/utils/download.js"></script>
+  <script src="../../../shared/components/header.js"></script>
+  <script src="../../../shared/components/footer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
