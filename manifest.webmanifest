@@ -1,0 +1,16 @@
+{
+  "name": "Toolix — Browser-Native Productivity Platform",
+  "short_name": "Toolix",
+  "description": "A premium ecosystem of browser-native productivity utilities. Fast, client-side tools executing entirely in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08090d",
+  "theme_color": "#08090d",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

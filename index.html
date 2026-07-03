@@ -3,12 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toolix — Everything you need to work smarter</title>
-  <meta name="description" content="A premium ecosystem of privacy-first, client-side productivity tools. Merge, split, compress, and edit files entirely in your browser.">
+  <title>Toolix — Browser-Native Productivity Tools & Offline PDF Utilities</title>
+  <meta name="description" content="A premium ecosystem of privacy-first, browser-native productivity tools. Merge, split, compress, and edit files entirely in your browser without server uploads.">
+  <meta name="theme-color" content="#08090d">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="canonical" href="https://toolix-eight.vercel.app/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="Mithlesh">
+  <meta name="application-name" content="Toolix">
+
+  <!-- Google Search Console & Bing Webmaster Verification Placeholders -->
+  <meta name="google-site-verification" content="GOOGLE_VERIFICATION_PLACEHOLDER">
+  <meta name="msvalidate.01" content="BING_VERIFICATION_PLACEHOLDER">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolix-eight.vercel.app/">
+  <meta property="og:site_name" content="Toolix">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Toolix — Browser-Native Productivity Tools & Offline PDF Utilities">
+  <meta property="og:description" content="A premium ecosystem of privacy-first, browser-native productivity tools. Merge, split, compress, and edit files entirely in your browser.">
+  <meta property="og:image" content="https://toolix-eight.vercel.app/logo.svg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://toolix-eight.vercel.app/">
+  <meta name="twitter:title" content="Toolix — Browser-Native Productivity Tools & Offline PDF Utilities">
+  <meta name="twitter:description" content="A premium ecosystem of privacy-first, browser-native productivity tools. Merge, split, compress, and edit files entirely in your browser.">
+  <meta name="twitter:image" content="https://toolix-eight.vercel.app/logo.svg">
   
   <!-- CSS & Theme Loader -->
   <link rel="stylesheet" href="shared/ui/style.css">
   <script src="shared/utils/theme.js"></script>
+
+  <!-- Structured Data (JSON-LD Schema) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://toolix-eight.vercel.app/#website",
+          "url": "https://toolix-eight.vercel.app/",
+          "name": "Toolix",
+          "description": "A premium ecosystem of privacy-first, browser-native productivity tools.",
+          "publisher": {
+            "@id": "https://toolix-eight.vercel.app/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://toolix-eight.vercel.app/#organization",
+          "name": "Toolix",
+          "url": "https://toolix-eight.vercel.app/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://toolix-eight.vercel.app/logo.svg"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Toolix Productivity Suite",
+          "operatingSystem": "All",
+          "applicationCategory": "ProductivityApplication",
+          "browserRequirements": "Requires HTML5, Javascript, WebAssembly support. Runs locally in modern browsers (Chrome, Safari, Firefox, Edge).",
+          "url": "https://toolix-eight.vercel.app/",
+          "description": "Client-side browser-native productivity tools. Convert, compress, split, and merge files entirely in your browser without uploading to any server.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+  </script>
+
+  <!-- Optional Integration Placeholders for GA4 / Clarity / Plausible -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GA_TRACKING_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GA_TRACKING_ID');
+  </script>
+  -->
 </head>
   
 <body>
@@ -16,7 +96,7 @@
   <!-- Global Navigation Header -->
   <toolix-header></toolix-header>
 
-  <main class="container" style="margin-top: var(--space-xxxl); margin-bottom: var(--space-mega);">
+  <main class="container fade-up-element" style="margin-top: var(--space-xl); margin-bottom: var(--space-mega);">
     
     <!-- Hero / Tagline -->
     <section class="hero-section">
@@ -27,10 +107,16 @@
         Simple, fast, and secure utilities running entirely in your browser.<br>Your files never leave your device.
       </p>
 
+      <!-- Primary & Secondary CTA Buttons -->
+      <div class="hero-ctas">
+        <a href="#categories-section" class="btn btn-primary">Explore Tools</a>
+        <a href="pdf/index.html" class="btn btn-secondary">Browse Categories</a>
+      </div>
+
       <!-- Instant Tool Search -->
       <div class="search-wrapper">
-        <div class="search-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="search-icon-wrap" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
         <input
           type="text"
@@ -39,43 +125,62 @@
           placeholder="Search tools… merge, compress, jpg to pdf, reduce size"
           autocomplete="off"
           spellcheck="false"
+          aria-label="Search Toolix tools"
         >
-        <kbd class="search-shortcut" id="search-shortcut-hint">/</kbd>
+        <kbd class="search-shortcut" id="search-shortcut-hint" aria-hidden="true">/</kbd>
       </div>
 
-      <!-- Trust Indicators -->
-      <div class="trust-bar">
-        <span class="trust-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          100% Browser-Based
-        </span>
-        <span class="trust-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          No Upload Required
-        </span>
-        <span class="trust-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Privacy First
-        </span>
-        <span class="trust-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Free Forever
-        </span>
-      </div>
+
     </section>
 
     <!-- Search Results (hidden by default) -->
-    <section id="search-results-section" style="display: none; margin-bottom: var(--space-xxxl);">
+    <section id="search-results-section" style="display: none; margin-bottom: var(--space-xl);">
       <div style="display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);">
         <h2 class="text-sm label">Search Results</h2>
         <span class="text-xs text-muted" id="search-count"></span>
       </div>
       <div class="tools-grid" id="search-results-grid"></div>
-      <p id="search-empty" class="text-sm text-muted" style="display:none; text-align:center; padding: var(--space-xl) 0;">No tools found for "<span id="search-empty-query"></span>". Try a different keyword.</p>
+      
+      <!-- Premium Empty State design -->
+      <div id="search-empty" class="empty-state-card" style="display:none;">
+        <svg class="empty-state-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z"></path>
+        </svg>
+        <h3 class="text-md" style="font-weight: 600;">No tools found</h3>
+        <p class="text-sm text-muted">We couldn't find any tools matching "<span id="search-empty-query"></span>". Try a different keyword.</p>
+      </div>
     </section>
 
+    <!-- Credibility Stats Bar -->
+    <div class="stats-bar animate-fade-up" style="animation-delay: 150ms;">
+      <div class="stats-item">
+        <span>25+</span>
+        <span>Tools</span>
+      </div>
+      <div class="stats-divider" aria-hidden="true"></div>
+      <div class="stats-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--primary-500);"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Browser-Native Processing</span>
+      </div>
+      <div class="stats-divider" aria-hidden="true"></div>
+      <div class="stats-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--primary-500);"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Privacy First</span>
+      </div>
+      <div class="stats-divider" aria-hidden="true"></div>
+      <div class="stats-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--primary-500);"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>No Server Uploads</span>
+      </div>
+      <div class="stats-divider" aria-hidden="true"></div>
+      <div class="stats-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--primary-500);"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Files Stay On Device</span>
+      </div>
+    </div>
+
     <!-- Main Categories & Tools -->
-    <section id="categories-section">
+    <section id="categories-section" class="fade-up-element" style="animation-delay: 200ms;">
       <div class="section-header">
         <div>
           <h2 class="text-sm label">PDF Utilities</h2>

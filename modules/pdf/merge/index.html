@@ -3,8 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Merge PDF — Toolix</title>
-  <meta name="description" content="Combine multiple PDF files into one. Fast, secure, and completely client-side. Your files never touch a server.">
+  <title>Merge PDF Online - Free Browser PDF Merger | Toolix</title>
+  <meta name="description" content="Merge multiple PDF files into one ordered document directly in your browser. Fast, secure, and privacy-first. No server uploads.">
+  <meta name="theme-color" content="#08090d">
+  <link rel="icon" type="image/svg+xml" href="../../../logo.svg">
+  <link rel="canonical" href="https://toolix-eight.vercel.app/pdf/merge/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Google Search Console & Bing Webmaster Verification Placeholders -->
+  <meta name="google-site-verification" content="GOOGLE_VERIFICATION_PLACEHOLDER">
+  <meta name="msvalidate.01" content="BING_VERIFICATION_PLACEHOLDER">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolix-eight.vercel.app/pdf/merge/">
+  <meta property="og:site_name" content="Toolix">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Merge PDF Online - Free Browser PDF Merger | Toolix">
+  <meta property="og:description" content="Merge multiple PDF files into one ordered document directly in your browser. Fast, secure, and privacy-first.">
+  <meta property="og:image" content="https://toolix-eight.vercel.app/logo.svg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://toolix-eight.vercel.app/pdf/merge/">
+  <meta name="twitter:title" content="Merge PDF Online - Free Browser PDF Merger | Toolix">
+  <meta name="twitter:description" content="Merge multiple PDF files into one ordered document directly in your browser. Fast, secure, and privacy-first.">
+  <meta name="twitter:image" content="https://toolix-eight.vercel.app/logo.svg">
   
   <!-- CSS & Theme Loader -->
   <link rel="stylesheet" href="../../../shared/ui/style.css">
@@ -13,6 +37,52 @@
   <!-- PDF Processing Libraries (CDN) -->
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <!-- Structured Data (JSON-LD Schema) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Merge PDF — Toolix",
+          "operatingSystem": "All",
+          "applicationCategory": "ProductivityApplication",
+          "browserRequirements": "Requires HTML5, Javascript, WebAssembly support. Runs locally in modern browsers.",
+          "url": "https://toolix-eight.vercel.app/pdf/merge/",
+          "description": "Combine multiple PDF files into one ordered document in seconds. 100% browser-native client-side processing.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://toolix-eight.vercel.app/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "PDF Tools",
+              "item": "https://toolix-eight.vercel.app/pdf/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Merge PDF",
+              "item": "https://toolix-eight.vercel.app/pdf/merge/"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
 </head>
 <body>
 
@@ -22,13 +92,12 @@
   <main class="workspace-container">
     
     <!-- Breadcrumbs / Navigation -->
-    <nav style="font-size: var(--text-xs); color: var(--text-muted);">
-      <a href="../index.html" class="nav-link" style="display: inline-flex; align-items: center; gap: 4px;">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        PDF Utilities
-      </a>
-      <span style="margin: 0 6px;">/</span>
-      <span class="text-secondary">Merge PDF</span>
+    <nav aria-label="Breadcrumb" style="font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--space-md);">
+      <a href="../../../index.html" class="nav-link">Home</a>
+      <span style="margin: 0 6px;" aria-hidden="true">></span>
+      <a href="../index.html" class="nav-link">PDF Tools</a>
+      <span style="margin: 0 6px;" aria-hidden="true">></span>
+      <span class="text-secondary" style="font-weight: 500;">Merge PDF</span>
     </nav>
 
     <!-- Workspace Title -->
@@ -79,24 +148,8 @@
         <div>
           <h2 class="text-xs label" style="margin-bottom: var(--space-md);">Options</h2>
           
-          <!-- Tool Instructions / Information -->
-          <div style="font-size: var(--text-xs); color: var(--text-secondary); display: flex; flex-direction: column; gap: var(--space-sm);">
-            <div style="display: flex; gap: var(--space-sm); align-items: start;">
-              <div style="color: var(--accent); margin-top: 2px;">✔</div>
-              <div>Drag and drop the preview cards to reorder the merging sequence.</div>
-            </div>
-            <div style="display: flex; gap: var(--space-sm); align-items: start;">
-              <div style="color: var(--accent); margin-top: 2px;">✔</div>
-              <div>All file parsing is fully local. No upload limits on server size.</div>
-            </div>
-            <div style="display: flex; gap: var(--space-sm); align-items: start;">
-              <div style="color: var(--accent); margin-top: 2px;">✔</div>
-              <div>High compression layout is applied by default to merged pages.</div>
-            </div>
-          </div>
-          
           <!-- Blank Page Padding Option -->
-          <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--border-subtle);">
+          <div>
             <label class="checkbox-label" style="align-items: center; cursor: pointer; display: flex; gap: var(--space-xs); font-size: var(--text-xs); font-weight: 500;">
               <input type="checkbox" id="blank-page-padding" class="checkbox" style="width: 14px; height: 14px;">
               <span>Pad odd page counts with a blank page</span>
@@ -128,6 +181,45 @@
       </aside>
 
     </div>
+
+    <!-- Search Engine Friendly unique copy & internal links -->
+    <section class="seo-copy-section" style="margin-top: var(--space-xxl); padding-top: var(--space-xl); border-top: 1px solid var(--border-subtle); text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
+      <h2 class="text-lg" style="margin-bottom: var(--space-md); font-weight: 600;">Secure, Browser-Native PDF Merging</h2>
+      <p class="text-sm text-secondary" style="line-height: 1.6; margin-bottom: var(--space-md);">
+        Toolix's PDF Merge utility allows you to combine multiple PDF files into one ordered document directly inside your web browser. Built on local Javascript execution libraries, this tool is 100% browser-native. This means your files are parsed and assembled entirely on your client machine and never uploaded to any server.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-xl);">
+        <div>
+          <h3 class="text-sm label" style="margin-bottom: var(--space-sm); font-weight: 600; color: var(--text-primary);">Why use Toolix PDF Merger?</h3>
+          <ul style="font-size: var(--text-xs); color: var(--text-secondary); padding-left: var(--space-md); line-height: 1.6;">
+            <li><strong>Complete Privacy:</strong> Your sensitive files never travel over the network. Ideal for corporate documents, invoices, and personal IDs.</li>
+            <li><strong>No Upload Limits:</strong> Drag and drop gigabytes of files. Since processing is local, you are not constrained by server upload limits.</li>
+            <li><strong>Drag-and-Drop Reordering:</strong> Easily sort cards horizontally to match your target merging sequence.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm label" style="margin-bottom: var(--space-sm); font-weight: 600; color: var(--text-primary);">Who is it for?</h3>
+          <p class="text-xs text-secondary" style="line-height: 1.6;">
+            Ideal for legal practitioners compiling litigation bundles, researchers stitching papers, students assembling assignments, and remote workers combining project receipts.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Tools (Internal Linking) -->
+      <div style="border-top: 1px solid var(--border-subtle); padding-top: var(--space-md); margin-top: var(--space-xl);">
+        <h3 class="text-sm label" style="margin-bottom: var(--space-sm); font-weight: 600; color: var(--text-muted);">Related PDF Utilities:</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-xs); font-size: var(--text-xs);">
+          <a href="../split/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">Split PDF</a>
+          <a href="../compress/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">Compress PDF</a>
+          <a href="../rotate/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">Rotate PDF</a>
+          <a href="../pdf-to-image/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">PDF to Image</a>
+          <a href="../image-to-pdf/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">Image to PDF</a>
+          <a href="../index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-weight: 500;">All PDF Tools</a>
+          <a href="../../../index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-weight: 500;">Home</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Global Footer -->

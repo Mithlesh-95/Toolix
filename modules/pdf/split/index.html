@@ -3,8 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Split PDF — Toolix</title>
-  <meta name="description" content="Split a PDF into individual pages or custom ranges. Fast, secure, and completely client-side. Your files never touch a server.">
+  <title>Split PDF Online - Extract Pages & Split PDF Files | Toolix</title>
+  <meta name="description" content="Split your PDF document into individual pages or extract custom page ranges entirely in your browser. Fast, client-side, and completely secure.">
+  <meta name="theme-color" content="#08090d">
+  <link rel="icon" type="image/svg+xml" href="../../../logo.svg">
+  <link rel="canonical" href="https://toolix-eight.vercel.app/pdf/split/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Google Search Console & Bing Webmaster Verification Placeholders -->
+  <meta name="google-site-verification" content="GOOGLE_VERIFICATION_PLACEHOLDER">
+  <meta name="msvalidate.01" content="BING_VERIFICATION_PLACEHOLDER">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolix-eight.vercel.app/pdf/split/">
+  <meta property="og:site_name" content="Toolix">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Split PDF Online - Extract Pages & Split PDF Files | Toolix">
+  <meta property="og:description" content="Split your PDF document into individual pages or extract custom page ranges entirely in your browser. Fast, client-side, and completely secure.">
+  <meta property="og:image" content="https://toolix-eight.vercel.app/logo.svg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://toolix-eight.vercel.app/pdf/split/">
+  <meta name="twitter:title" content="Split PDF Online - Extract Pages & Split PDF Files | Toolix">
+  <meta name="twitter:description" content="Split your PDF document into individual pages or extract custom page ranges entirely in your browser. Fast, client-side, and completely secure.">
+  <meta name="twitter:image" content="https://toolix-eight.vercel.app/logo.svg">
   
   <!-- CSS & Theme Loader -->
   <link rel="stylesheet" href="../../../shared/ui/style.css">
@@ -14,6 +38,52 @@
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- Structured Data (JSON-LD Schema) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Split PDF — Toolix",
+          "operatingSystem": "All",
+          "applicationCategory": "ProductivityApplication",
+          "browserRequirements": "Requires HTML5, Javascript, WebAssembly support. Runs locally in modern browsers.",
+          "url": "https://toolix-eight.vercel.app/pdf/split/",
+          "description": "Split your PDF document into individual pages or extract custom page ranges. 100% browser-native client-side processing.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://toolix-eight.vercel.app/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "PDF Tools",
+              "item": "https://toolix-eight.vercel.app/pdf/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Split PDF",
+              "item": "https://toolix-eight.vercel.app/pdf/split/"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
 </head>
 <body>
 
@@ -23,13 +93,12 @@
   <main class="workspace-container">
     
     <!-- Breadcrumbs / Navigation -->
-    <nav style="font-size: var(--text-xs); color: var(--text-muted);">
-      <a href="../index.html" class="nav-link" style="display: inline-flex; align-items: center; gap: 4px;">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        PDF Utilities
-      </a>
-      <span style="margin: 0 6px;">/</span>
-      <span class="text-secondary">Split PDF</span>
+    <nav aria-label="Breadcrumb" style="font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--space-md);">
+      <a href="../../../index.html" class="nav-link">Home</a>
+      <span style="margin: 0 6px;" aria-hidden="true">></span>
+      <a href="../index.html" class="nav-link">PDF Tools</a>
+      <span style="margin: 0 6px;" aria-hidden="true">></span>
+      <span class="text-secondary" style="font-weight: 500;">Split PDF</span>
     </nav>
 
     <!-- Workspace Title -->
@@ -163,6 +232,45 @@
       </aside>
 
     </div>
+
+    <!-- Search Engine Friendly unique copy & internal links -->
+    <section class="seo-copy-section" style="margin-top: var(--space-xxl); padding-top: var(--space-xl); border-top: 1px solid var(--border-subtle); text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
+      <h2 class="text-lg" style="margin-bottom: var(--space-md); font-weight: 600;">Browser-Native PDF Splitting</h2>
+      <p class="text-sm text-secondary" style="line-height: 1.6; margin-bottom: var(--space-md);">
+        Toolix's PDF Split utility enables you to divide your PDF document into individual pages or custom ranges without uploading files to third-party servers. All operations happen in JavaScript on your local machine, keeping private corporate files, scan logs, and statements secure.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-xl);">
+        <div>
+          <h3 class="text-sm label" style="margin-bottom: var(--space-sm); font-weight: 600; color: var(--text-primary);">Why use Toolix PDF Splitter?</h3>
+          <ul style="font-size: var(--text-xs); color: var(--text-secondary); padding-left: var(--space-md); line-height: 1.6;">
+            <li><strong>Privacy First:</strong> Completely local compilation. Your files stay strictly in the sandbox of your browser.</li>
+            <li><strong>Flexible Ranges:</strong> Extract specific sections (e.g. 1-3, 5, 8-10) or split every single page into single-page PDF files download-ready in a single ZIP.</li>
+            <li><strong>Zero Server Load:</strong> Process large documents instantly.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm label" style="margin-bottom: var(--space-sm); font-weight: 600; color: var(--text-primary);">Who is it for?</h3>
+          <p class="text-xs text-secondary" style="line-height: 1.6;">
+            Excellent for administrators selecting pages of scanned contracts, accounting departments splitting monthly invoices, and students extracting specific workbook segments.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Tools (Internal Linking) -->
+      <div style="border-top: 1px solid var(--border-subtle); padding-top: var(--space-md); margin-top: var(--space-xl);">
+        <h3 class="text-sm label" style="margin-bottom: var(--space-sm); font-weight: 600; color: var(--text-muted);">Related PDF Utilities:</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-xs); font-size: var(--text-xs);">
+          <a href="../merge/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">Merge PDF</a>
+          <a href="../compress/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">Compress PDF</a>
+          <a href="../rotate/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">Rotate PDF</a>
+          <a href="../pdf-to-image/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">PDF to Image</a>
+          <a href="../image-to-pdf/index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">Image to PDF</a>
+          <a href="../index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-weight: 500;">All PDF Tools</a>
+          <a href="../../../index.html" class="nav-link" style="padding: var(--space-xs) var(--space-sm); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-weight: 500;">Home</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Global Footer -->
