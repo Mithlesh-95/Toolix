@@ -4,7 +4,7 @@
   "description": "Everything you need to work smarter. Offline-first productivity platform.",
   "scripts": {
     "build": "node build.js",
-    "dev": "node build.js --serve"
+    "dev": "node dev.js"
   },
   "keywords": [
     "toolix",
